@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link rel="stylesheet" href="./styles.css">
     <title>erasmus.clidrop</title>
 </head>
 <body>
+    <div class="container_centered">
+        <p class="text_top">You can transfer your files using one of the following options:</p>
+        <div class="container">
+            <div class="container_left">
+                <div class="container_header_left">
+                    <i class="hgi hgi-stroke hgi-cursor-02"></i>
+                    <h2><span class="cli_text">cli</span>ck&get</h2>
+                </div>
 
+                <div class="button_left_container">
+                    <input class="input_left" type="file" multiple hidden="hidden">
+                    <button type="button" class="button_left">
+                        <svg
+                                aria-hidden="true"
+                                stroke="#056dfa"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                    stroke-width="2"
+                                    stroke="#fffffff"
+                                    d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125"
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                            ></path>
+                            <path
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    stroke-width="2"
+                                    stroke="#fffffff"
+                                    d="M17 15V18M17 21V18M17 18H14M17 18H20"
+                            ></path>
+                        </svg>
+                        <span class="button_left_text">Upload</span>
+                    </button>
+                    <span class="file_info">No files selected</span>
+                </div>
+            </div>
+            <div class="container_right">
+                <div class="container_header_right qr_code__frame">
+                    <h2>drag&<span class="drop_text">drop</span></h2>
+                </div>
+                <form action="/upload" class="dropzone" id="my-awesome-dropzone"></form>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>

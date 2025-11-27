@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+html {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+body {
+    background: #f3f4f6;
+}
+
+
+h1,h2,h3, span {
+    font-family: 'Vend Sans', sans-serif;
+}
+
+/* Container for centering */
+
+.container_centered {
+    padding: 2em 2em;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: .6em;
+}
+
+.text_top {
+    text-align: center;
+    opacity: .8;
+}
+
+/* Container for dividing two sides */
+
+.container {
+    display: flex;
+    column-gap: 5em;
+    padding-top: 3.5em;
+    height: 100%;
+}
+
+/* Container left */
+
+.container_left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+
+.container_header_left {
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    padding-block-end: 1.3em;
+}
+
+.hgi-cursor-02 {
+    font-size: 60px;
+    margin-right: .3em;
+    color: #056dfa;
+}
+
+.cli_text {
+    color: #056dfa;
+}
+
+.button_left_container {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+}
+
+.button_left {
+    display:flex;
+    padding: 8px 12px 8px 16px;
+    border: none;
+    align-items: center;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.button_left svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.button_left_text {
+    margin-top: 1px;
+    font-size: .9rem;
+    line-height: 22px;
+    color: #056dfa;
+    letter-spacing: 1px;
+}
+
+.button_left:hover {
+    background: #056bfa49;
+}
+
+.file_info {
+    font-family: 'Lexend', sans-serif;
+    font-size: .8rem;
+}
+
+/* Container right */
+
+.container_right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+
+.container_header_right {
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-flex;
+    padding-inline: 20px;
+    margin-bottom: 1.3em;
+}
+
+.drop_text {
+    color: #056dfa;
+}
+
+
+/* QR-style corners */
+.container_header_right::before,
+.container_header_right::after,
+.container_header_right h2::before,
+.container_header_right h2::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #056dfa;
+}
+
+
+.container_header_right::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+
+.container_header_right::after {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+
+.container_header_right h2::before {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+
+.container_header_right h2::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/*  Drag And Drop */
+
+.dropzone {
+    font-family: 'Lexend', sans-serif;
+    font-size: .8rem;
+    border: none;
+    color: #056dfa;
+    padding: .5em 2em;
+    outline: none;
+    background-color: transparent;
+}
+
+.dropzone.dz-clickable {
+    width: 100%;
+}
+
+@media (max-width: 1270px) {
+
+    .container_centered {
+        flex-direction: column;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 6.5em;
+    }
+}
+
+@media(max-width: 655px) {
+    .container_header_left {
+        font-size: 1.8rem;
+    }
+
+    .text_top {
+        font-size: .8rem;
+    }
+
+    .container_header_right {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .container_header_left {
+        font-size: 1.4rem;
+    }
+
+    .text_top {
+        font-size: .8rem;
+    }
+
+    .container_header_right {
+        font-size: 1.4rem;
+    }
+
+    .container_header_right::before,
+    .container_header_right::after,
+    .container_header_right h2::before,
+    .container_header_right h2::after {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 455px) {
+    .container_header_left {
+        font-size: 1rem;
+    }
+
+    .text_top {
+        font-size: .8rem;
+    }
+
+    .container_header_right {
+        font-size: 1rem;
+    }
+
+    .container_header_right::before,
+    .container_header_right::after,
+    .container_header_right h2::before,
+    .container_header_right h2::after {
+        width: 5px;
+        height: 5px;
+    }
+}
