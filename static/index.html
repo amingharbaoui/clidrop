@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" rel="stylesheet" />
-    <link href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" rel="stylesheet"
+          type="text/css"/>
     <link href="./styles.css" rel="stylesheet">
     <title>erasmus.clidrop</title>
 </head>
 <body>
-    <div class="container_centered">
-        <p class="text_top">You can transfer your files using one of the following options:</p>
-        <div class="container">
-            <div class="container_left">
-                <div class="container_header_left">
-                    <i class="hgi hgi-stroke hgi-cursor-02"></i>
-                    <h2><span class="cli_text">cli</span>ck&get</h2>
-                </div>
+<div class="container_centered">
+    <p class="text_top">You can transfer your files using one of the following
+        options:</p>
+    <div class="container">
+        <div class="container_left">
+            <div class="container_header_left">
+                <i class="hgi hgi-stroke hgi-cursor-02"></i>
+                <h2><span class="cli_text">cli</span>ck&get</h2>
+            </div>
 
+            <div class="body_left_container">
                 <div class="button_left_container">
                     <input class="input_left" hidden="hidden" multiple type="file">
                     <button class="button_left" type="button">
@@ -49,15 +52,17 @@
                     <span class="file_info">No files selected</span>
                 </div>
             </div>
-            <div class="container_right">
-                <div class="container_header_right qr_code__frame">
-                    <h2>drag&<span class="drop_text">drop</span></h2>
-                </div>
-                <form action="/upload" class="dropzone" id="my-awesome-dropzone"></form>
+        </div>
+        <div class="container_right">
+            <div class="container_header_right qr_code__frame">
+                <h2>drag&<span class="drop_text">drop</span></h2>
             </div>
+            <form action="/upload" class="dropzone" id="my-awesome-dropzone"></form>
         </div>
     </div>
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <script src="./app.js"></script>
+</div>
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<script src="./dropzone_config.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>

@@ -10,11 +10,11 @@ import java.nio.file.Paths;
 
 public class QRCode {
     public static void main(String[] args) throws WriterException, IOException {
-        String data = "http://10.1.89.199:3000";
+        String data = "http://localhost:3000";
         String path = "C:/Users/Amin/Documents/clidrop/qrcode.jpg";
 
-        BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500
-                , 500);
+        BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 250
+                , 250);
 
         MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
     }
