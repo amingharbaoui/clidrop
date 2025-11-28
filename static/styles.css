@@ -311,6 +311,10 @@ h1, h2, h3, span {
         flex-direction: row;
         padding-top: 2.5em;
     }
+
+    .hgi-cursor-02 {
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 455px) {

@@ -1,4 +1,3 @@
-// Button on click event, click on hidden input
 const inputLeft = document.querySelector('.input_left');
 const buttonLeft = document.querySelector(".button_left");
 
