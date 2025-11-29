@@ -51,7 +51,7 @@ public class UploadServlet extends HttpServlet {
                 continue;
             }
 
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            String fileName = Paths.get(p.getSubmittedFileName()).getFileName().toString();
             Path savedPath = targetDir.resolve(fileName);
             p.write(savedPath.toString());
             count++;
