@@ -93,8 +93,6 @@ h1, h2, h3, span {
     align-items: center;
     border-radius: .5em;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
 }
 
 .button_left svg {
