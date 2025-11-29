@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class QRCode {
+public class QrCode {
     public static void main(String[] args) throws WriterException, IOException {
         String ip = Network.getActiveLocalIp();
         int port = 3000;

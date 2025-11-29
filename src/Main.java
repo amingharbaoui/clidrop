@@ -1,24 +1,39 @@
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
 public static void main(String[] args) throws Exception {
 
+    Mode mode = Mode.RECEIVE;
+
+    UploadServlet uploadServlet = new UploadServlet(mode);
+
+
     Server server = new Server(3000);
-    ServletContextHandler handler = new ServletContextHandler();
-    ServletHolder holder = new ServletHolder(new DefaultServlet());
 
-    holder.setInitParameter("resourceBase", "static");
-    holder.setInitParameter("dirAllowed", "false");
+    ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+    context.setContextPath("/");
 
-    handler.addServlet(holder, "/*");
+    ServletHolder defaultHolder = new ServletHolder("default", new DefaultServlet());
 
+    defaultHolder.setInitParameter("resourceBase", "static");
+    defaultHolder.setInitParameter("dirAllowed", "false");
+    context.addServlet(defaultHolder, "/");
 
-    handler.setContextPath("/");
-    server.setHandler(handler);
+    ServletHolder uploadHolder = new ServletHolder("upload", uploadServlet);
+    uploadHolder.getRegistration().setMultipartConfig(
+            new jakarta.servlet.MultipartConfigElement((String) null)
+    );
+
+    context.addServlet(uploadHolder, "/upload");
+
+    server.setHandler(context);
+
 
     server.start();
+    String ip = Network.getActiveLocalIp();
+    System.out.println("Server started on: http://" + ip + ":" + "3000");
     server.join();
 }
 
