@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,18 +24,14 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        String baseDir = System.getProperty("user.dir");
-        Path sharingDir = Paths.get(baseDir, "sharing");
-        Path targetDir;
+        String homeDir = System.getProperty("user.home");
+        Path targetDir = Paths.get(homeDir, "Downloads");
 
-        if (mode == Mode.SEND) {
-            targetDir = sharingDir.resolve("send");
-        } else {
-            targetDir = sharingDir.resolve("receive");
+        if (Desktop.isDesktopSupported()) {
+            Desktop.getDesktop().open(targetDir.toFile());
         }
 
         Files.createDirectories(targetDir);
-
 
         Part filePart = req.getPart("file");
 
