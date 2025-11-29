@@ -14,12 +14,6 @@ import java.nio.file.Paths;
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 
-    private final Mode mode;
-
-    public UploadServlet(Mode mode) {
-        this.mode = mode;
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -27,11 +21,12 @@ public class UploadServlet extends HttpServlet {
         String homeDir = System.getProperty("user.home");
         Path targetDir = Paths.get(homeDir, "Downloads");
 
+        Files.createDirectories(targetDir);
+
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().open(targetDir.toFile());
         }
 
-        Files.createDirectories(targetDir);
 
         Part filePart = req.getPart("file");
 

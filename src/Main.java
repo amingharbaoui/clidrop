@@ -5,20 +5,19 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 public static void main(String[] args) throws Exception {
 
-    Mode mode = Mode.RECEIVE;
-
-    UploadServlet uploadServlet = new UploadServlet(mode);
-
+    UploadServlet uploadServlet = new UploadServlet();
 
     Server server = new Server(3000);
 
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
     context.setContextPath("/");
 
+
     ServletHolder defaultHolder = new ServletHolder("default", new DefaultServlet());
 
     defaultHolder.setInitParameter("resourceBase", "static");
     defaultHolder.setInitParameter("dirAllowed", "false");
+
     context.addServlet(defaultHolder, "/");
 
     ServletHolder uploadHolder = new ServletHolder("upload", uploadServlet);
