@@ -1,11 +1,12 @@
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatReader;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class QRCode {
@@ -13,12 +14,19 @@ public class QRCode {
         String ip = Network.getActiveLocalIp();
         int port = 3000;
         String data = "http://" + ip + ":" + port + "/index.html";
-        String path = "C:/Users/Amin/Documents/clidrop/qrcode.jpg";
+
+
+        String baseDir = System.getProperty("user.dir");
+        Path qrDir = Paths.get(baseDir, "qrcode");
+        String path = "./qrcode/qrcode.jpg";
+        Files.createDirectory(qrDir);
+
+        Path qrPath = qrDir.resolve("qrcode.jpg");
 
         BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 250
                 , 250);
 
-        MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
+        MatrixToImageWriter.writeToPath(matrix, "jpg", qrPath);
     }
 }
 
