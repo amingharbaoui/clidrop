@@ -5,7 +5,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -17,16 +16,12 @@ public class QRCode {
 
 
         String baseDir = System.getProperty("user.dir");
-        Path qrDir = Paths.get(baseDir, "qrcode");
-        String path = "./qrcode/qrcode.jpg";
-        Files.createDirectory(qrDir);
-
-        Path qrPath = qrDir.resolve("qrcode.jpg");
+        Path qrPath = Paths.get(baseDir, "qrcode.png");
 
         BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 250
                 , 250);
 
-        MatrixToImageWriter.writeToPath(matrix, "jpg", qrPath);
+        MatrixToImageWriter.writeToPath(matrix, "png", qrPath);
     }
 }
 
