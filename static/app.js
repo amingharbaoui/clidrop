@@ -1,7 +1,7 @@
 const inputLeft = document.querySelector('.input_left');
 const buttonLeft = document.querySelector(".button_left");
 
-buttonLeft.addEventListener("click", function () {
+buttonLeft.addEventListener("click", () => {
     inputLeft.click();
 })
 

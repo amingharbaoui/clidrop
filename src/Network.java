@@ -1,11 +1,14 @@
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
-import java.nio.channels.DatagramChannel;
 
 public class Network {
+
+    private static String HOST = "8.8.8.8";
+    private static int PORT = 3000;
+
     public static String getActiveLocalIp() {
         try (DatagramSocket socket = new DatagramSocket()) {
-            socket.connect(Inet4Address.getByName("192.168.0.1"), 80);
+            socket.connect(Inet4Address.getByName(HOST), PORT);
             return socket.getLocalAddress().getHostAddress();
 
         } catch (Exception e) {

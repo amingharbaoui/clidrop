@@ -13,6 +13,9 @@ public static void main(String[] args) throws Exception {
     holder.setInitParameter("dirAllowed", "false");
 
     handler.addServlet(holder, "/*");
+
+
+    handler.setContextPath("/");
     server.setHandler(handler);
 
     server.start();
