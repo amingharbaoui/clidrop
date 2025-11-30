@@ -4,10 +4,14 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class ServerManager {
+
     private Server server;
     private int port = 3000;
     private String ip;
 
+    public static void main(String[] args) throws Exception {
+
+    }
 
     public void start() throws Exception {
 
