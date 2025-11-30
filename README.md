@@ -1,6 +1,7 @@
 
 # clidrop
-A simple tool to share files between devices connected to the same Wi‑Fi network.## Installation
+A simple tool to share files between devices connected to the same Wi‑Fi network.
+## Installation
 
     1. Make sure Java 17 or newer is installed on your machine.
 
