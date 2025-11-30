@@ -5,8 +5,17 @@ import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
+import java.io.PrintWriter;
+
 public class TerminalUi {
+    private final ServerManager manager = new ServerManager();
+
     public static void main(String[] args) throws Exception {
+        TerminalUi ui = new TerminalUi();
+        ui.run();
+    }
+
+    public void run() throws Exception {
         Terminal terminal = TerminalBuilder.builder().system(true).build();
 
         LineReader reader = LineReaderBuilder.builder().terminal(terminal).build();
@@ -20,29 +29,54 @@ public class TerminalUi {
 
             switch (line.toLowerCase()) {
                 case "start":
-                    System.out.println("Server started");
-                    break;
-
-                case "qrcode":
-                    System.out.println("QR code requested");
+                    manager.start();
+                    terminal.writer().println("Server started at: " + manager.getUrl());
                     break;
 
                 case "stop":
-                    System.out.println("Server stopped");
-                    break;
-
-                case "exit":
-                    System.out.println("Exit requested");
+                    if (!manager.isRunning()) {
+                        terminal.writer().println("No server is running.");
+                    } else {
+                        manager.stop();
+                        terminal.writer().println("Server at " + manager.getUrl() + " " +
+                                "has left the dropzone.");
+                    }
                     break;
 
                 case "help":
-                    System.out.println("help requested");
+                    printHelp(terminal);
                     break;
 
+                case "exit":
+                case "quit":
+                    terminal.writer().flush();
+                    return;
+
+
                 default:
-                    System.out.println("Unknown command: " + line);
+                    System.out.println("This command isn’t in the dropzone. Type 'help' for options.");
             }
         }
+
+    }
+
+    private void printHelp(Terminal terminal) {
+        PrintWriter w = terminal.writer();
+
+        w.println();
+        w.println("clidrop – drop it in the terminal, open it anywhere");
+        w.println();
+        w.println("Usage: <command>");
+        w.println();
+        w.println("Available commands:");
+        w.println("  start         Start web server");
+        w.println("  stop          Stop web server");
+        w.println("  help          Show this help");
+        w.println("  quit/exit     Exit CLI");
+        w.println();
+
+        w.flush();
+
 
     }
 }

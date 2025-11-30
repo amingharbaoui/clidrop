@@ -43,12 +43,16 @@ public class ServerManager {
     }
 
     public void stop() throws Exception {
-        if (server != null) {
+        if (server != null && server.isStarted()) {
             server.stop();
         }
     }
 
     public String getUrl() {
         return "http://" + (ip != null ? ip : Network.getActiveLocalIp()) + ":" + port;
+    }
+
+    public boolean isRunning() {
+        return server != null && server.isStarted();
     }
 }
