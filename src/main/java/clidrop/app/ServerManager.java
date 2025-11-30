@@ -1,3 +1,5 @@
+package clidrop.app;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -8,10 +10,6 @@ public class ServerManager {
     private Server server;
     private int port = 3000;
     private String ip;
-
-    public static void main(String[] args) throws Exception {
-
-    }
 
     public void start() throws Exception {
 
@@ -41,7 +39,6 @@ public class ServerManager {
         server.start();
 
         ip = Network.getActiveLocalIp();
-        System.out.println("Server started on:  http//" + ip + ":" + port);
     }
 
     public void stop() throws Exception {
