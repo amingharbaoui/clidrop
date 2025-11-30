@@ -20,12 +20,13 @@ public class ServerManager {
         UploadServlet uploadServlet = new UploadServlet();
         server = new Server(port);
 
-        ServletContextHandler context =
-                new ServletContextHandler(ServletContextHandler.SESSIONS);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
 
+        String resourceBase = ServerManager.class.getClassLoader().getResource("").toExternalForm();
+
         ServletHolder defaultHolder = new ServletHolder("default", new DefaultServlet());
-        defaultHolder.setInitParameter("resourceBase", "static");
+        defaultHolder.setInitParameter("resourceBase", resourceBase);
         defaultHolder.setInitParameter("dirAllowed", "false");
 
         context.addServlet(defaultHolder, "/");
