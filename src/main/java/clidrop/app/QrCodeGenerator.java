@@ -20,7 +20,7 @@ public class QrCodeGenerator {
         Files.createDirectories(qrPath.getParent());
 
         BitMatrix matrix = new MultiFormatWriter().encode(url, BarcodeFormat.QR_CODE
-                , 250, 250);
+                , 500, 500);
 
         MatrixToImageWriter.writeToPath(matrix, "png", qrPath);
         return qrPath;
