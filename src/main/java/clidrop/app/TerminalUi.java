@@ -118,21 +118,20 @@ public class TerminalUi {
 
 
     private void printHelp(Terminal terminal) {
-        
+
         PrintWriter w = terminal.writer();
 
         w.println();
-        w.println("Usage:");
-        w.println("  send <path-to-file>        Send a file from this computer to another device");
-        w.println("  receive                    Receive files from a phone on this computer");
-        w.println();
         w.println("Available commands:");
-        w.println("  send <path-to-file>        Start send mode (PC -> phone), show QR download link");
-        w.println("  receive                    Start receive mode (phone -> PC), show QR upload link");
-        w.println("  help                       Show this help message");
-        w.println("  quit / exit                Exit clidrop");
+        w.println("  send                   Send files from this PC to another " +
+                "device");
+        w.println("  receive                Receive files on this PC from another device");
+        w.println("  help                   Show this help message");
+        w.println("  quit / exit            Exit clidrop");
         w.println();
-        w.flush();
-
+        w.println("Usage:");
+        w.println("  send <path-to-file>");
+        w.println("  receive ");
+        w.println();
     }
 }
