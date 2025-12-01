@@ -6,6 +6,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -37,8 +38,15 @@ public class ServerManager {
         ServletHolder sendHolder = new ServletHolder("send", sendServlet);
         context.addServlet(sendHolder, "/send");
 
+        URL url = ServerManager.class.getClassLoader().getResource("");
 
-        String resourceBase = ServerManager.class.getClassLoader().getResource("").toExternalForm();
+        String resourceBase;
+
+        if (url != null) {
+            resourceBase = url.toExternalForm();
+        } else {
+            resourceBase = "file:" + System.getProperty("user.dir") + "/";
+        }
 
         ServletHolder defaultHolder = new ServletHolder("default", new DefaultServlet());
         defaultHolder.setInitParameter("resourceBase", resourceBase);
