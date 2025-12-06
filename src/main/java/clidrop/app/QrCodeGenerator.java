@@ -13,17 +13,30 @@ import java.nio.file.Paths;
 
 public class QrCodeGenerator {
 
-    public static Path generateForUrl(String url) throws WriterException, IOException {
-        String baseDir = System.getProperty("user.dir");
-        Path qrPath = Paths.get(baseDir, "sharing", "qrcode", "qrcode.png");
+    private static Path getProjectRoot() {
+        String cwd = System.getProperty("user.dir");
+        Path current =  Paths.get(cwd);
 
-        Files.createDirectories(qrPath.getParent());
+        if(current.getFileName().toString().equalsIgnoreCase("release")) {
+            return current.getParent();
+        }
+
+        return current;
+    }
+
+    public static Path generateForUrl(String url) throws WriterException, IOException {
+        Path destination =
+                getProjectRoot().resolve("sharing").resolve("qrcode").resolve("qrcode" +
+                        ".png");
+
+        Files.createDirectories(destination.getParent());
+
 
         BitMatrix matrix = new MultiFormatWriter().encode(url, BarcodeFormat.QR_CODE
                 , 500, 500);
 
-        MatrixToImageWriter.writeToPath(matrix, "png", qrPath);
-        return qrPath;
+        MatrixToImageWriter.writeToPath(matrix, "png", destination);
+        return destination;
     }
 
     public static void main(String[] args) throws Exception {
