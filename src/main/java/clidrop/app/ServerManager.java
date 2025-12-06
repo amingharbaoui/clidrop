@@ -38,20 +38,21 @@ public class ServerManager {
         ServletHolder sendHolder = new ServletHolder("send", sendServlet);
         context.addServlet(sendHolder, "/send");
 
-        URL url = ServerManager.class.getClassLoader().getResource("");
-
+        URL url = ServerManager.class.getClassLoader().getResource("index.html");
         String resourceBase;
 
         if (url != null) {
-            resourceBase = url.toExternalForm();
+            resourceBase = url.toExternalForm().replace("index.html",  "");
         } else {
-            resourceBase = "file:" + System.getProperty("user.dir") + "/";
+            resourceBase = "file:" + System.getProperty("user.dir") + "/src/main" +
+                    "/resources/";
         }
 
         ServletHolder defaultHolder = new ServletHolder("default", new DefaultServlet());
         defaultHolder.setInitParameter("resourceBase", resourceBase);
         defaultHolder.setInitParameter("dirAllowed", "false");
-
+        defaultHolder.setInitParameter("welcomeServlets", "true");
+        defaultHolder.setInitParameter("redirectWelcome", "true");
         context.addServlet(defaultHolder, "/");
 
         ServletHolder uploadHolder = new ServletHolder("upload", new UploadServlet());
