@@ -26,8 +26,7 @@ public class QrCodeGenerator {
 
     public static Path generateForUrl(String url) throws WriterException, IOException {
         Path destination =
-                getProjectRoot().resolve("sharing").resolve("qrcode").resolve("qrcode" +
-                        ".png");
+                getProjectRoot().resolve("sharing").resolve("qrcode.png");
 
         Files.createDirectories(destination.getParent());
 
