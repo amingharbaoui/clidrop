@@ -5,7 +5,7 @@
   <jar>C:\Users\Amin\Documents\clidrop\release\clidrop-1.0-SNAPSHOT.jar</jar>
   <outfile>C:\Users\Amin\Documents\clidrop\release\clidrop-1.0.exe</outfile>
   <errTitle></errTitle>
-  <cmdLine>--enable-native-access=ALL-UNNAMED</cmdLine>
+  <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
   <downloadUrl></downloadUrl>
