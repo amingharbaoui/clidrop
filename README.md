@@ -4,7 +4,7 @@ A simple tool to share files between devices connected to the same Wi‑Fi netwo
 ## Usage/Examples
 
 
-    Start the application by running clidrop-1.0.exe.
+    Start the application by running start.bat.
 
     Type 'help' to list all available commands.
 
@@ -25,7 +25,7 @@ A simple tool to share files between devices connected to the same Wi‑Fi netwo
     
     2. Unzip the folder.
 
-    3. Open the .exe file.
+    3. Open the .bat file.
 
     4. Enjoy!
 
